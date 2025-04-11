@@ -198,8 +198,8 @@ public interface GunItemDataAccessor extends IGun {
     @Override
     default int getCurrentAmmoCount(ItemStack gun) {
         CompoundTag nbt = gun.getOrCreateTag();
-        if (nbt.contains(GUN_CURRENT_AMMO_COUNT_TAG, Tag.TAG_INT)) {
-            return nbt.getInt(GUN_CURRENT_AMMO_COUNT_TAG);
+        if (nbt.contains(GUN_CURRENT_AMMO_COUNT_TAG, Tag.TAG_DOUBLE)) {
+            return nbt.getDouble(GUN_CURRENT_AMMO_COUNT_TAG);
         }
         return 0;
     }
@@ -207,7 +207,7 @@ public interface GunItemDataAccessor extends IGun {
     @Override
     default void setCurrentAmmoCount(ItemStack gun, int ammoCount) {
         CompoundTag nbt = gun.getOrCreateTag();
-        nbt.putInt(GUN_CURRENT_AMMO_COUNT_TAG, Math.max(ammoCount, 0));
+        nbt.putDouble(GUN_CURRENT_AMMO_COUNT_TAG, Math.max(ammoCount, 0));
     }
 
     @Override
